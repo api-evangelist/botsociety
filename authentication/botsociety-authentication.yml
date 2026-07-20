@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/botsociety-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: user_id
+  type: apiKey
+  in: header
+  parameter: user_id
+  description: The Botsociety user id, obtained from the Botsociety app.
+  sources:
+  - openapi/botsociety-openapi.yml
+- name: api_key_public
+  type: apiKey
+  in: header
+  parameter: api_key_public
+  description: The Botsociety public API key, obtained from the Botsociety app.
+  sources:
+  - openapi/botsociety-openapi.yml
