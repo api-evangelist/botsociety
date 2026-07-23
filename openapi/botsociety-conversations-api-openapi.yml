@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: Botsociety Conversations API
+  version: '2.0'
+  description: The Botsociety API lets your application retrieve the content of chatbot and voice-assistant designs (conversations, messages, variables, intents) created in the Botsociety design tool, so message content can be updated in the design tool without redeploying bot code. Reconstructed from the official `botsociety` npm client (v4.0.1). Authentication uses a user id plus a public API key, both obtained from the Botsociety app and passed as request headers.
+  contact:
+    name: Botsociety
+    url: https://botsociety.io
+    email: info@botsociety.io
+  license:
+    name: ISC
+servers:
+- url: https://app.botsociety.io
+  description: Production API host (app.botsociety.io)
+security:
+- user_id: []
+  api_key_public: []
+tags:
+- name: Conversations
+  description: Manage conversations (legacy apisociety 2.0 API)
+paths:
+  /apisociety/2.0/npm/:
+    get:
+      operationId: authCheck
+      tags:
+      - Conversations
+      summary: Verify credentials
+      description: Validate the user_id / api_key_public credential pair.
+      responses:
+        '200':
+          description: Credentials are valid.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /apisociety/2.0/npm/conversations/:
+    post:
+      operationId: createConversation
+      tags:
+      - Conversations
+      summary: Create a conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Conversation'
+      responses:
+        '200':
+          description: The created conversation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /apisociety/2.0/npm/conversations/{conversationId}:
+    get:
+      operationId: getConversations
+      tags:
+      - Conversations
+      summary: Get a conversation
+      parameters:
+      - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: The conversation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteConversation
+      tags:
+      - Conversations
+      summary: Delete a conversation
+      parameters:
+      - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: Conversation deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Conversation:
+      type: object
+      description: A conversation (design).
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info:
+          type: string
+          description: Human-readable error information.
+  parameters:
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
+  securitySchemes:
+    user_id:
+      type: apiKey
+      in: header
+      name: user_id
+      description: The Botsociety user id, obtained from the Botsociety app.
+    api_key_public:
+      type: apiKey
+      in: header
+      name: api_key_public
+      description: The Botsociety public API key, obtained from the Botsociety app.

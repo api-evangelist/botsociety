@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Botsociety Conversations Variables API
+  version: '2.0'
+  description: The Botsociety API lets your application retrieve the content of chatbot and voice-assistant designs (conversations, messages, variables, intents) created in the Botsociety design tool, so message content can be updated in the design tool without redeploying bot code. Reconstructed from the official `botsociety` npm client (v4.0.1). Authentication uses a user id plus a public API key, both obtained from the Botsociety app and passed as request headers.
+  contact:
+    name: Botsociety
+    url: https://botsociety.io
+    email: info@botsociety.io
+  license:
+    name: ISC
+servers:
+- url: https://app.botsociety.io
+  description: Production API host (app.botsociety.io)
+security:
+- user_id: []
+  api_key_public: []
+tags:
+- name: Variables
+  description: Manage variables within a conversation (legacy apisociety 2.0 API)
+paths:
+  /apisociety/2.0/npm/conversations/{conversationId}/variables/:
+    get:
+      operationId: getVariables
+      tags:
+      - Variables
+      summary: Get conversation variables
+      parameters:
+      - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: The variables.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: addVariables
+      tags:
+      - Variables
+      summary: Add variables to a conversation
+      parameters:
+      - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Variable'
+      responses:
+        '200':
+          description: Variables added.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info:
+          type: string
+          description: Human-readable error information.
+    Variable:
+      type: object
+      description: A variable attached to a conversation.
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
+  securitySchemes:
+    user_id:
+      type: apiKey
+      in: header
+      name: user_id
+      description: The Botsociety user id, obtained from the Botsociety app.
+    api_key_public:
+      type: apiKey
+      in: header
+      name: api_key_public
+      description: The Botsociety public API key, obtained from the Botsociety app.
