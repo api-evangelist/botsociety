@@ -1,0 +1,11 @@
+generated: '2026-07-18'
+method: generated
+skills:
+  - file: botsociety-retrieve-design-content.md
+    name: Retrieve Botsociety design content
+    api: openapi/botsociety-openapi.yml
+    operations: [getConversation]
+  - file: botsociety-manage-conversation.md
+    name: Manage a Botsociety conversation
+    api: openapi/botsociety-openapi.yml
+    operations: [createConversation, addMessage, linkMessage, addVariables, getConversations]

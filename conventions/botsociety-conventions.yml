@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/botsociety-openapi.yml + https://github.com/botsociety/botsociety-node-client
+summary: Cross-cutting request/response semantics for the Botsociety API, derived from the official node client and API docs.
+authentication:
+  style: api-key
+  scheme: Two header credentials sent together on every request.
+  headers:
+    - user_id
+    - api_key_public
+  see: authentication/botsociety-authentication.yml
+content_type: application/json
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is documented.
+pagination:
+  supported: false
+  note: No pagination parameters are documented; collections are returned in full.
+versioning:
+  scheme: uri-path
+  current: '2.0'
+  note: Legacy operations are served under /apisociety/2.0/npm/. See lifecycle/botsociety-lifecycle.yml.
+error_envelope:
+  format: json
+  shape: Non-200 responses return a JSON object; client-side validation errors carry an `info` string.
+  see: errors/botsociety-problem-types.yml
+rate_limiting:
+  documented: false

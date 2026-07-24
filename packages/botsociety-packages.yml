@@ -1,0 +1,14 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.npmjs.com/package/botsociety
+packages:
+  - language: javascript
+    registry: npm
+    name: botsociety
+    url: https://www.npmjs.com/package/botsociety
+    install: npm install botsociety
+    version: 4.0.1
+    repository: https://github.com/botsociety/botsociety-node-client
+    license: ISC
+    official: true
+    description: The official Botsociety npm API Module — retrieve design content and manage conversations, messages, and variables.

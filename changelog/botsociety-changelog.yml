@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/botsociety/botsociety-node-client/blob/master/CHANGELOG.md
+scheme: manual
+current_version: '2.0'
+entries:
+  - version: '2.0'
+    date: '2019-08-02'
+    breaking: false
+    additions:
+      - Create a conversation
+      - Delete a conversation
+      - Create a new message attached to a conversation
+      - Link a message to another message in the same conversation
+      - Remove an existing link connection between two messages
+      - Delete a message from a conversation
+      - Add variables to a conversation
+    deprecations:
+      - getMessage() deprecated; use getMessageByConversation() instead.
+    highlights: Release of API version 2.0 with conversation, message, and variable management.
+  - version: '1.1'
+    date: '2018-02-01'
+    breaking: false
+    deprecations:
+      - getMessage() deprecated; use getMessageByConversation() instead.
+    highlights: Release of API version 1.1.

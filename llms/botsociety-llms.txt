@@ -1,0 +1,20 @@
+# Botsociety
+
+> Botsociety is a tool to design, preview, and prototype chatbots and voice assistants. Its API lets applications retrieve the content of a design (messages, intents, variables) at runtime so bot content can change without a code redeploy. The product is winding down and the API host (app.botsociety.io) is presently unreachable; artifacts here are reconstructed from the official first-party npm client and public API docs.
+
+## APIs
+- [Botsociety API (OpenAPI)](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/openapi/botsociety-openapi.yml): 12 operations across Designs, Conversations, Messages, and Variables. Auth via user_id + api_key_public headers.
+
+## Docs
+- [API documentation](https://botsociety.github.io): Botsociety API documentation site.
+- [Apiary reference](https://botsociety.docs.apiary.io/): endpoint reference.
+- [Official npm client](https://www.npmjs.com/package/botsociety): `npm install botsociety`.
+- [GitHub organization](https://github.com/botsociety): source for the node client and integration examples.
+
+## Artifacts
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/authentication/botsociety-authentication.yml)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/conventions/botsociety-conventions.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/errors/botsociety-problem-types.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/data-model/botsociety-data-model.yml)
+- [Changelog](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/changelog/botsociety-changelog.yml)
+- [Packages / SDK](https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/packages/botsociety-packages.yml)

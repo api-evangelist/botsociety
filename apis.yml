@@ -1,20 +1,104 @@
 aid: botsociety
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/botsociety.png
 name: BotSociety
-description: BotSociety is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Botsociety is a tool to design, preview, and prototype conversational interfaces — chatbots and
+  voice assistants — before they are built. Its API lets applications retrieve the content of a
+  design (messages, intents, variables, and integration data) at runtime, so bot content can be
+  updated in the design tool without redeploying bot code. The API exposes design retrieval plus a
+  legacy apisociety 2.0 surface for managing conversations, messages, and variables, authenticated
+  with a user id and a public API key sent as request headers. Botsociety, backed by 500 Global,
+  is winding down ("working on a new direction") and its API host is presently unreachable; the
+  artifacts in this repo are reconstructed from the official first-party npm client and public API
+  documentation. Surfaced originally as a 500 Global portfolio company and enriched into the API
+  Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/botsociety/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Chatbots
+- Conversational AI
+- Voice Assistants
+- Bot Design
+- Prototyping
+- Developer Tools
+apis:
+- aid: botsociety:botsociety-conversations-api
+  name: BotSociety Conversations API
+  description: Manage conversations (legacy apisociety 2.0 API)
+  humanURL: https://botsociety.github.io
+  baseURL: https://app.botsociety.io
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/botsociety-conversations-api-openapi.yml
+  - type: Documentation
+    url: https://botsociety.github.io
+  - type: APIReference
+    url: https://botsociety.docs.apiary.io/
+- aid: botsociety:botsociety-designs-api
+  name: BotSociety Designs API
+  description: Retrieve design/integration content (current API)
+  humanURL: https://botsociety.github.io
+  baseURL: https://app.botsociety.io
+  tags:
+  - Designs
+  properties:
+  - type: OpenAPI
+    url: openapi/botsociety-designs-api-openapi.yml
+  - type: Documentation
+    url: https://botsociety.github.io
+  - type: APIReference
+    url: https://botsociety.docs.apiary.io/
+- aid: botsociety:botsociety-messages-api
+  name: BotSociety Messages API
+  description: Manage messages within a conversation (legacy apisociety 2.0 API)
+  humanURL: https://botsociety.github.io
+  baseURL: https://app.botsociety.io
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/botsociety-messages-api-openapi.yml
+  - type: Documentation
+    url: https://botsociety.github.io
+  - type: APIReference
+    url: https://botsociety.docs.apiary.io/
+- aid: botsociety:botsociety-variables-api
+  name: BotSociety Variables API
+  description: Manage variables within a conversation (legacy apisociety 2.0 API)
+  humanURL: https://botsociety.github.io
+  baseURL: https://app.botsociety.io
+  tags:
+  - Variables
+  properties:
+  - type: OpenAPI
+    url: openapi/botsociety-variables-api-openapi.yml
+  - type: Documentation
+    url: https://botsociety.github.io
+  - type: APIReference
+    url: https://botsociety.docs.apiary.io/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +107,42 @@ maintainers:
 common:
 - type: Website
   url: https://botsociety.io
+- type: Documentation
+  url: https://botsociety.github.io
+- type: APIReference
+  url: https://botsociety.docs.apiary.io/
+- type: GitHubOrganization
+  url: https://github.com/botsociety
+- type: Authentication
+  url: authentication/botsociety-authentication.yml
+- type: DomainSecurity
+  url: security/botsociety-domain-security.yml
+- type: Packages
+  url: packages/botsociety-packages.yml
+- type: SDKs
+  url: packages/botsociety-packages.yml
+- type: Conventions
+  url: conventions/botsociety-conventions.yml
+- type: ErrorCatalog
+  url: errors/botsociety-problem-types.yml
+- type: DataModel
+  url: data-model/botsociety-data-model.yml
+- type: MCPServer
+  url: mcp/botsociety-mcp.yml
+- type: Conformance
+  url: conformance/botsociety-conformance.yml
+- type: Lifecycle
+  url: lifecycle/botsociety-lifecycle.yml
+- type: ChangeLog
+  url: changelog/botsociety-changelog.yml
+- type: LLMsTxt
+  url: llms/botsociety-llms.txt
+- type: Overlay
+  url: overlays/botsociety-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

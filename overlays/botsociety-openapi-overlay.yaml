@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Botsociety API
+  version: 1.0.0
+extends: openapi/botsociety-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-source: https://github.com/botsociety/botsociety-node-client
+      x-apievangelist-note: >-
+        Reconstructed from the official first-party node client; the API host app.botsociety.io
+        is presently unreachable (product winding down).
+  - target: $.tags
+    update:
+      - name: Designs
+        description: Retrieve design/integration content (current API).

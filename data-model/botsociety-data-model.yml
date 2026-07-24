@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/botsociety-openapi.yml
+summary: Entity-relationship graph derived from the Botsociety API operations and schemas.
+entities:
+  - name: Design
+    aka: Conversation
+    description: A chatbot / voice-assistant design created in the Botsociety tool.
+    relationships:
+      - type: has_many
+        target: Message
+        via: messages
+      - type: has_many
+        target: Variable
+        via: variables
+      - type: has_one
+        target: IntentsInfo
+        via: intentsInfo
+  - name: Message
+    description: A single message node within a design's conversation flow.
+    relationships:
+      - type: belongs_to
+        target: Design
+        via: conversationId
+      - type: has_many
+        target: MessageLink
+        via: link
+  - name: MessageLink
+    description: A directional connection between two messages in the same conversation.
+    relationships:
+      - type: belongs_to
+        target: Message
+        via: from
+      - type: belongs_to
+        target: Message
+        via: to
+  - name: Variable
+    description: A key/value variable attached to a conversation.
+    relationships:
+      - type: belongs_to
+        target: Design
+        via: conversationId
+  - name: IntentsInfo
+    description: NLP training data (intents, parameters, user/bot messages, bot responses).
+    relationships:
+      - type: belongs_to
+        target: Design

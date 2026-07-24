@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/botsociety-openapi.yml + official node client error handling
+format: json
+note: >-
+  The Botsociety API does not use RFC 9457 problem+json. The official client rejects on any
+  non-200 status and parses the JSON response body as the error. Validation errors raised
+  client-side carry an `info` string.
+envelope:
+  content_type: application/json
+  fields:
+    - name: info
+      description: Human-readable error information.
+problems:
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid user_id / api_key_public credentials.
+    action: Verify the user id and public API key from the Botsociety app.
+  - status: 404
+    title: Not Found
+    meaning: The requested design, conversation, or message does not exist.
+    action: Verify the resource id.

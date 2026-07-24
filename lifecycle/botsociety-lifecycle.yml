@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/botsociety/botsociety-node-client/blob/master/CHANGELOG.md
+versioning:
+  scheme: uri-path
+  current: '2.0'
+  note: Legacy operations served under /apisociety/2.0/npm/; current design retrieval under /designs/.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation policy or Sunset (RFC 8594) header support. Individual client methods
+    have been deprecated (e.g. getMessage() -> getMessageByConversation()). The Botsociety product
+    itself is winding down ("working on a new direction") and the API host app.botsociety.io is
+    presently unreachable.
+status_page: null
+sla: null
+deprecated_operations:
+  - openapi/botsociety-openapi.yml#getMessageByConversation  # note: getMessage() was removed in favor of this

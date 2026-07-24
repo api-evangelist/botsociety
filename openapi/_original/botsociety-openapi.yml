@@ -1,0 +1,305 @@
+# generated: '2026-07-18'
+# method: derived
+# source: https://github.com/botsociety/botsociety-node-client (official npm client v4.0.1) + https://botsociety.github.io API docs
+# note: Faithful reconstruction of the Botsociety API surface from the official first-party
+#       node client (paths, methods, headers verbatim from source). Not a provider-published
+#       OpenAPI. The API host app.botsociety.io is presently unreachable (company wound down).
+openapi: 3.0.3
+info:
+  title: Botsociety API
+  version: '2.0'
+  description: >-
+    The Botsociety API lets your application retrieve the content of chatbot and
+    voice-assistant designs (conversations, messages, variables, intents) created
+    in the Botsociety design tool, so message content can be updated in the design
+    tool without redeploying bot code. Reconstructed from the official `botsociety`
+    npm client (v4.0.1). Authentication uses a user id plus a public API key, both
+    obtained from the Botsociety app and passed as request headers.
+  contact:
+    name: Botsociety
+    url: https://botsociety.io
+    email: info@botsociety.io
+  license:
+    name: ISC
+servers:
+  - url: https://app.botsociety.io
+    description: Production API host (app.botsociety.io)
+tags:
+  - name: Designs
+    description: Retrieve design/integration content (current API)
+  - name: Conversations
+    description: Manage conversations (legacy apisociety 2.0 API)
+  - name: Messages
+    description: Manage messages within a conversation (legacy apisociety 2.0 API)
+  - name: Variables
+    description: Manage variables within a conversation (legacy apisociety 2.0 API)
+paths:
+  /designs/{conversationId}/integrations:
+    get:
+      operationId: getConversation
+      tags: [Designs]
+      summary: Retrieve design content and integrations
+      description: >-
+        Retrieve the content (messages, intents, integrations) of a Botsociety
+        design by its id, so a running chatbot/voice assistant can fetch message
+        content at runtime.
+      parameters:
+        - name: conversationId
+          in: path
+          required: true
+          description: The Botsociety design (conversation) id.
+          schema: { type: string }
+      responses:
+        '200':
+          description: Design content.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Design' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /apisociety/2.0/npm/:
+    get:
+      operationId: authCheck
+      tags: [Conversations]
+      summary: Verify credentials
+      description: Validate the user_id / api_key_public credential pair.
+      responses:
+        '200':
+          description: Credentials are valid.
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /apisociety/2.0/npm/conversations/:
+    post:
+      operationId: createConversation
+      tags: [Conversations]
+      summary: Create a conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Conversation' }
+      responses:
+        '200':
+          description: The created conversation.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Conversation' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /apisociety/2.0/npm/conversations/{conversationId}:
+    get:
+      operationId: getConversations
+      tags: [Conversations]
+      summary: Get a conversation
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: The conversation.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Conversation' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      operationId: deleteConversation
+      tags: [Conversations]
+      summary: Delete a conversation
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: Conversation deleted.
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /apisociety/2.0/npm/conversations/{conversationId}/messages/:
+    post:
+      operationId: addMessage
+      tags: [Messages]
+      summary: Add a message to a conversation
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Message' }
+      responses:
+        '200':
+          description: The created message.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Message' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /apisociety/2.0/npm/conversations/{conversationId}/messages/{messageId}:
+    get:
+      operationId: getMessageByConversation
+      tags: [Messages]
+      summary: Get a message by conversation
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+        - $ref: '#/components/parameters/MessageId'
+      responses:
+        '200':
+          description: The message.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Message' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      operationId: deleteMessage
+      tags: [Messages]
+      summary: Delete a message
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+        - $ref: '#/components/parameters/MessageId'
+      responses:
+        '200':
+          description: Message deleted.
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /apisociety/2.0/npm/conversations/{conversationId}/link:
+    post:
+      operationId: linkMessage
+      tags: [Messages]
+      summary: Link a message to another message
+      description: Create a link connection between two messages in the same conversation.
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/MessageLink' }
+      responses:
+        '200':
+          description: Link created.
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /apisociety/2.0/npm/conversations/{conversationId}/unlink:
+    post:
+      operationId: unlinkMessage
+      tags: [Messages]
+      summary: Unlink two messages
+      description: Remove an existing link connection between two messages.
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/MessageLink' }
+      responses:
+        '200':
+          description: Link removed.
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /apisociety/2.0/npm/conversations/{conversationId}/variables/:
+    get:
+      operationId: getVariables
+      tags: [Variables]
+      summary: Get conversation variables
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      responses:
+        '200':
+          description: The variables.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Variable' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      operationId: addVariables
+      tags: [Variables]
+      summary: Add variables to a conversation
+      parameters:
+        - $ref: '#/components/parameters/ConversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items: { $ref: '#/components/schemas/Variable' }
+      responses:
+        '200':
+          description: Variables added.
+        '401': { $ref: '#/components/responses/Unauthorized' }
+components:
+  securitySchemes:
+    user_id:
+      type: apiKey
+      in: header
+      name: user_id
+      description: The Botsociety user id, obtained from the Botsociety app.
+    api_key_public:
+      type: apiKey
+      in: header
+      name: api_key_public
+      description: The Botsociety public API key, obtained from the Botsociety app.
+  parameters:
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema: { type: string }
+    MessageId:
+      name: messageId
+      in: path
+      required: true
+      description: The message id.
+      schema: { type: string }
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Design:
+      type: object
+      description: A Botsociety design and its content.
+      properties:
+        messages:
+          type: array
+          items: { $ref: '#/components/schemas/Message' }
+        intentsInfo:
+          type: object
+          description: NLP training data (intents, parameters, user/bot messages, bot responses).
+    Conversation:
+      type: object
+      description: A conversation (design).
+      properties:
+        id: { type: string }
+        name: { type: string }
+    Message:
+      type: object
+      description: A message within a conversation.
+      properties:
+        id: { type: string }
+        path: { type: string, description: The path/position of the message in the design flow. }
+    MessageLink:
+      type: object
+      description: A link between two messages in the same conversation.
+      properties:
+        from: { type: string }
+        to: { type: string }
+    Variable:
+      type: object
+      description: A variable attached to a conversation.
+      properties:
+        name: { type: string }
+        value: { type: string }
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info: { type: string, description: Human-readable error information. }
+security:
+  - user_id: []
+    api_key_public: []
