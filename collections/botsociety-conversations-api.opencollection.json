@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botsociety Conversations API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_id",
+      "value": "{{user_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verify credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/"
+          },
+          "docs": "Validate the user_id / api_key_public credential pair."
+        },
+        {
+          "info": {
+            "name": "Create a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a conversation"
+        },
+        {
+          "info": {
+            "name": "Get a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ]
+          },
+          "docs": "Get a conversation"
+        },
+        {
+          "info": {
+            "name": "Delete a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ]
+          },
+          "docs": "Delete a conversation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

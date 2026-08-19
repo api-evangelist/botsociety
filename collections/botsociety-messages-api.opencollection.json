@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botsociety Conversations Messages API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_id",
+      "value": "{{user_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a message to a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/messages/",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a message to a conversation"
+        },
+        {
+          "info": {
+            "name": "Get a message by conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/messages/:messageId",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "The message id."
+              }
+            ]
+          },
+          "docs": "Get a message by conversation"
+        },
+        {
+          "info": {
+            "name": "Delete a message",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/messages/:messageId",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "The message id."
+              }
+            ]
+          },
+          "docs": "Delete a message"
+        },
+        {
+          "info": {
+            "name": "Link a message to another message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/link",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a link connection between two messages in the same conversation."
+        },
+        {
+          "info": {
+            "name": "Unlink two messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/unlink",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove an existing link connection between two messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

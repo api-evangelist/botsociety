@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botsociety Conversations Designs API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_id",
+      "value": "{{user_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Designs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve design content and integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.botsociety.io/designs/:conversationId/integrations",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The Botsociety design (conversation) id."
+              }
+            ]
+          },
+          "docs": "Retrieve the content (messages, intents, integrations) of a Botsociety design by its id, so a running chatbot/voice assistant can fetch message content at runtime."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Botsociety Conversations Variables API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_id",
+      "value": "{{user_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Variables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversation variables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/variables/",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ]
+          },
+          "docs": "Get conversation variables"
+        },
+        {
+          "info": {
+            "name": "Add variables to a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.botsociety.io/apisociety/2.0/npm/conversations/:conversationId/variables/",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path",
+                "description": "The conversation (design) id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add variables to a conversation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
