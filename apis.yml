@@ -77,6 +77,8 @@ apis:
   humanURL: https://botsociety.github.io
   baseURL: https://app.botsociety.io
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
