@@ -50,6 +50,14 @@ tags:
 - Company
 - Chatbots
 - Conversational AI
+- Voice Assistant
+- Bot Design
+- Prototyping
+- Developer Tools
+tags_raw:
+- Company
+- Chatbots
+- Conversational AI
 - Voice Assistants
 - Bot Design
 - Prototyping
@@ -75,6 +83,8 @@ apis:
   humanURL: https://botsociety.github.io
   baseURL: https://app.botsociety.io
   tags:
+  - Design
+  tags_raw:
   - Designs
   properties:
   - type: OpenAPI
