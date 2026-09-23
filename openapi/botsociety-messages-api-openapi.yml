@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Botsociety Conversations Messages API
+  title: Botsociety Messages API
   version: '2.0'
   description: The Botsociety API lets your application retrieve the content of chatbot and voice-assistant designs (conversations, messages, variables, intents) created in the Botsociety design tool, so message content can be updated in the design tool without redeploying bot code. Reconstructed from the official `botsociety` npm client (v4.0.1). Authentication uses a user id plus a public API key, both obtained from the Botsociety app and passed as request headers.
   contact:
@@ -118,16 +118,22 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    MessageId:
+      name: messageId
+      in: path
+      required: true
+      description: The message id.
+      schema:
+        type: string
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
   schemas:
-    Message:
-      type: object
-      description: A message within a conversation.
-      properties:
-        id:
-          type: string
-        path:
-          type: string
-          description: The path/position of the message in the design flow.
     MessageLink:
       type: object
       description: A link between two messages in the same conversation.
@@ -143,34 +149,28 @@ components:
         info:
           type: string
           description: Human-readable error information.
+    Message:
+      type: object
+      description: A message within a conversation.
+      properties:
+        id:
+          type: string
+        path:
+          type: string
+          description: The path/position of the message in the design flow.
   responses:
-    Unauthorized:
-      description: Missing or invalid credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    ConversationId:
-      name: conversationId
-      in: path
-      required: true
-      description: The conversation (design) id.
-      schema:
-        type: string
-    MessageId:
-      name: messageId
-      in: path
-      required: true
-      description: The message id.
-      schema:
-        type: string
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     user_id:
       type: apiKey

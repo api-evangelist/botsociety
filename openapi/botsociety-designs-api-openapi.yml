@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Botsociety Conversations Designs API
+  title: Botsociety Designs API
   version: '2.0'
   description: The Botsociety API lets your application retrieve the content of chatbot and voice-assistant designs (conversations, messages, variables, intents) created in the Botsociety design tool, so message content can be updated in the design tool without redeploying bot code. Reconstructed from the official `botsociety` npm client (v4.0.1). Authentication uses a user id plus a public API key, both obtained from the Botsociety app and passed as request headers.
   contact:
@@ -45,16 +45,27 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Message:
+    Error:
       type: object
-      description: A message within a conversation.
+      description: Error response body.
       properties:
-        id:
+        info:
           type: string
-        path:
-          type: string
-          description: The path/position of the message in the design flow.
+          description: Human-readable error information.
     Design:
       type: object
       description: A Botsociety design and its content.
@@ -66,26 +77,15 @@ components:
         intentsInfo:
           type: object
           description: NLP training data (intents, parameters, user/bot messages, bot responses).
-    Error:
+    Message:
       type: object
-      description: Error response body.
+      description: A message within a conversation.
       properties:
-        info:
+        id:
           type: string
-          description: Human-readable error information.
-  responses:
-    Unauthorized:
-      description: Missing or invalid credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        path:
+          type: string
+          description: The path/position of the message in the design flow.
   securitySchemes:
     user_id:
       type: apiKey

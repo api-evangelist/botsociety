@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Botsociety Conversations Variables API
+  title: Botsociety Variables API
   version: '2.0'
   description: The Botsociety API lets your application retrieve the content of chatbot and voice-assistant designs (conversations, messages, variables, intents) created in the Botsociety design tool, so message content can be updated in the design tool without redeploying bot code. Reconstructed from the official `botsociety` npm client (v4.0.1). Authentication uses a user id plus a public API key, both obtained from the Botsociety app and passed as request headers.
   contact:
@@ -60,13 +60,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      description: Error response body.
-      properties:
-        info:
-          type: string
-          description: Human-readable error information.
     Variable:
       type: object
       description: A variable attached to a conversation.
@@ -75,6 +68,13 @@ components:
           type: string
         value:
           type: string
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info:
+          type: string
+          description: Human-readable error information.
   responses:
     Unauthorized:
       description: Missing or invalid credentials.
