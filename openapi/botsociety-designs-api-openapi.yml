@@ -46,26 +46,19 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid credentials.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      description: Error response body.
-      properties:
-        info:
-          type: string
-          description: Human-readable error information.
     Design:
       type: object
       description: A Botsociety design and its content.
@@ -86,6 +79,13 @@ components:
         path:
           type: string
           description: The path/position of the message in the design flow.
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info:
+          type: string
+          description: Human-readable error information.
   securitySchemes:
     user_id:
       type: apiKey
