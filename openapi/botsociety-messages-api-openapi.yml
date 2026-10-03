@@ -118,30 +118,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    ConversationId:
-      name: conversationId
-      in: path
-      required: true
-      description: The conversation (design) id.
-      schema:
-        type: string
-    MessageId:
-      name: messageId
-      in: path
-      required: true
-      description: The message id.
-      schema:
-        type: string
   schemas:
-    MessageLink:
-      type: object
-      description: A link between two messages in the same conversation.
-      properties:
-        from:
-          type: string
-        to:
-          type: string
     Message:
       type: object
       description: A message within a conversation.
@@ -158,6 +135,14 @@ components:
         info:
           type: string
           description: Human-readable error information.
+    MessageLink:
+      type: object
+      description: A link between two messages in the same conversation.
+      properties:
+        from:
+          type: string
+        to:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid credentials.
@@ -171,6 +156,21 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    MessageId:
+      name: messageId
+      in: path
+      required: true
+      description: The message id.
+      schema:
+        type: string
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
   securitySchemes:
     user_id:
       type: apiKey

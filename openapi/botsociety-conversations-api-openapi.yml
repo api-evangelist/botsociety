@@ -86,27 +86,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ConversationId:
-      name: conversationId
-      in: path
-      required: true
-      description: The conversation (design) id.
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -123,6 +102,27 @@ components:
           type: string
         name:
           type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
   securitySchemes:
     user_id:
       type: apiKey
