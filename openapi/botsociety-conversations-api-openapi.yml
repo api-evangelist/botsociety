@@ -87,13 +87,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Error:
-      type: object
-      description: Error response body.
-      properties:
-        info:
-          type: string
-          description: Human-readable error information.
     Conversation:
       type: object
       description: A conversation (design).
@@ -102,15 +95,22 @@ components:
           type: string
         name:
           type: string
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info:
+          type: string
+          description: Human-readable error information.
   responses:
-    Unauthorized:
-      description: Missing or invalid credentials.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Missing or invalid credentials.
       content:
         application/json:
           schema:

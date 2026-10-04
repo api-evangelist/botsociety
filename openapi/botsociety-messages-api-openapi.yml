@@ -144,14 +144,14 @@ components:
         to:
           type: string
   responses:
-    Unauthorized:
-      description: Missing or invalid credentials.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Missing or invalid credentials.
       content:
         application/json:
           schema:

@@ -67,13 +67,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      description: Error response body.
-      properties:
-        info:
-          type: string
-          description: Human-readable error information.
     Variable:
       type: object
       description: A variable attached to a conversation.
@@ -82,6 +75,13 @@ components:
           type: string
         value:
           type: string
+    Error:
+      type: object
+      description: Error response body.
+      properties:
+        info:
+          type: string
+          description: Human-readable error information.
   parameters:
     ConversationId:
       name: conversationId
