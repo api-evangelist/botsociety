@@ -59,6 +59,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Missing or invalid credentials.
@@ -82,14 +90,6 @@ components:
         info:
           type: string
           description: Human-readable error information.
-  parameters:
-    ConversationId:
-      name: conversationId
-      in: path
-      required: true
-      description: The conversation (design) id.
-      schema:
-        type: string
   securitySchemes:
     user_id:
       type: apiKey

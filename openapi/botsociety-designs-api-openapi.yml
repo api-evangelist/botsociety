@@ -46,15 +46,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Message:
+    Error:
       type: object
-      description: A message within a conversation.
+      description: Error response body.
       properties:
-        id:
+        info:
           type: string
-        path:
-          type: string
-          description: The path/position of the message in the design flow.
+          description: Human-readable error information.
     Design:
       type: object
       description: A Botsociety design and its content.
@@ -66,13 +64,15 @@ components:
         intentsInfo:
           type: object
           description: NLP training data (intents, parameters, user/bot messages, bot responses).
-    Error:
+    Message:
       type: object
-      description: Error response body.
+      description: A message within a conversation.
       properties:
-        info:
+        id:
           type: string
-          description: Human-readable error information.
+        path:
+          type: string
+          description: The path/position of the message in the design flow.
   responses:
     NotFound:
       description: Resource not found.

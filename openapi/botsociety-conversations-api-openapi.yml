@@ -86,6 +86,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      description: The conversation (design) id.
+      schema:
+        type: string
   schemas:
     Conversation:
       type: object
@@ -115,14 +123,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    ConversationId:
-      name: conversationId
-      in: path
-      required: true
-      description: The conversation (design) id.
-      schema:
-        type: string
   securitySchemes:
     user_id:
       type: apiKey
