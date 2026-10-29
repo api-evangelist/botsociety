@@ -64,6 +64,111 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BotSociety is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Botsociety is a tool to design, preview, and prototype conversational interfaces — chatbots and voice assistants — before they are built. Its API lets applications retrieve the content of a design (messages, intents, variables, and integration data) at runtime, so bot content can be updated in the design tool without redeploying bot code. The API exposes design retrieval plus a legacy apisociety 2.0 surface for managing conversations, messages, and variables, authenticated with a user id and a public API key sent as request headers. Botsociety, backed by 500 Global, is winding down ("working on a new direction") and its API host is presently unreachable; the artifacts in this repo are reconstructed from the official first-party npm client and public API documentation. Surfaced originally as a 500 Global portfolio company and enriched into the API Evangelist network.
 
-Backed by: 500-global — https://botsociety.io
+**Areas:** Company · Chatbots · Conversational AI · Voice Assistant · Bot Design · Prototyping · Developer Tools
+
+## BotSociety on APIs.io
+
+Everything profiled for BotSociety is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/botsociety/](https://apis.io/providers/botsociety/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [BotSociety Conversations API](https://apis.io/apis/botsociety/botsociety-conversations-api/) — Manage conversations (legacy apisociety 2.0 API)
+- [BotSociety Designs API](https://apis.io/apis/botsociety/botsociety-designs-api/) — Retrieve design/integration content (current API)
+- [BotSociety Messages API](https://apis.io/apis/botsociety/botsociety-messages-api/) — Manage messages within a conversation (legacy apisociety 2.0 API)
+- [BotSociety Variables API](https://apis.io/apis/botsociety/botsociety-variables-api/) — Manage variables within a conversation (legacy apisociety 2.0 API)
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [botsociety](https://apis.io/servers/botsociety/botsociety/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Botsociety Conversations API](https://apis.io/collections/botsociety/open-botsociety-conversations-api/)
+- [Botsociety Conversations Designs API](https://apis.io/collections/botsociety/open-botsociety-designs-api/)
+- [Botsociety Conversations Messages API](https://apis.io/collections/botsociety/open-botsociety-messages-api/)
+- [Botsociety Conversations Variables API](https://apis.io/collections/botsociety/open-botsociety-variables-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Botsociety Openapi Overlay](https://apis.io/overlays/botsociety/botsociety-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Botsociety Authentication](https://apis.io/security/botsociety/botsociety-authentication/)
+- [Botsociety Domain Security](https://apis.io/security/botsociety/botsociety-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://botsociety.io)
+- [Documentation](https://botsociety.github.io)
+- [API reference](https://botsociety.docs.apiary.io/)
+- [GitHub](https://github.com/botsociety)
+
+## API Evangelist rating
+
+**Kin Score 15.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 33.9 |
+| Access clarity | 0.0 |
+
+**Agent readiness 17.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/botsociety/](https://apis.io/providers/botsociety/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BotSociety: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/botsociety/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
